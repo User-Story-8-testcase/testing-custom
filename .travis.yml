@@ -1,16 +1,17 @@
 jobs:
-include:
-- os: linux
-dist: focal
-vm: #existing key
-create:
-name: my_custom_name #custom identifier string, human readable
-before_install:
-- sudo apt-get -y install libxml2-dev
-addons:
-apt:
-update: true
-- os: linux
-dist: focal
-script:
-- # do some other stuf
+  include:
+    - os: linux
+      dist: focal
+      vm:
+        create:
+          name: my_custom_name  # custom identifier string, human-readable
+      before_install:
+        - sudo apt-get -y install libxml2-dev
+      addons:
+        apt:
+          update: true
+
+    - os: linux
+      dist: focal
+      script:
+        - echo "Running some other stuff"
